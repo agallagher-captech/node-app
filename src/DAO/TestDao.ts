@@ -1,4 +1,4 @@
-import { myNumber } from "./impl/TestDaoImpl";
+import { myNumber } from "../models/myNumber";
 
 export default interface TestDAO {
     //specify methods
