@@ -37,3 +37,8 @@ model User {
   // 0 and an infinite number of tweets
   // tweets Tweet[]
 }
+
+model Number {
+  id Int @id @default(autoincrement())
+  number Int
+}

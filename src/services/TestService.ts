@@ -1,4 +1,4 @@
 export default interface TestService {
     //specify methods
-    addWithTen: (numberToAdd: number) => number 
+    addWithNumber: (numberToAdd: number) => Promise<number | undefined> 
 }
