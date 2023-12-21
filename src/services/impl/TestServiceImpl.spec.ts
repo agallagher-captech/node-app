@@ -5,9 +5,13 @@ import { TestServiceImpl } from "./TestServiceImpl";
 import TestDAO from "../../DAO/TestDAO"
 import { myNumber } from "../../models/myNumber";
 
-const mockTestDAO: TestDAO = {
+// const mockTestDAO: TestDAO = {
+//     getNumber: jest.fn<() => Promise<myNumber | null >>().mockResolvedValue({id: 1, number: 5})
+// }
+
+const mockTestDAO = {
     getNumber: jest.fn<() => Promise<myNumber | null >>().mockResolvedValue({id: 1, number: 5})
-}
+} as TestDAO
 
 describe("test a test", () => {
   // TODO: clearAllMocks vs. resetAllMocks
@@ -15,7 +19,6 @@ describe("test a test", () => {
 
   it("adds the two numbers", async () => {
     // Arrange
-    // TODO: replace DAO singleton with a mock
     const service = new TestServiceImpl(mockTestDAO);
 
     // Act
