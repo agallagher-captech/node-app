@@ -11,6 +11,8 @@
     "lint": "eslint src",
     "format": "npx prettier --write src",
     "format:check": "npx prettier --check src",
+    "db:replace": "npx prisma db push",
+    "db:view": "npx prisma studio",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },

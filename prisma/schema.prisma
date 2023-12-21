@@ -12,33 +12,58 @@ datasource db {
 
 // After the database connection
 
-model User {
-  // We set an `id` variable
-  // With an `Int` type (number)
-  // Then, we set the Prisma decorators:
-  // - @id (because it's an ID)
-  // - @default(autoincrement()) (default value is auto-incremented)
-  id Int @id @default(autoincrement())
+// model User {
+//   // We set an `id` variable
+//   // With an `Int` type (number)
+//   // Then, we set the Prisma decorators:
+//   // - @id (because it's an ID)
+//   // - @default(autoincrement()) (default value is auto-incremented)
+//   id Int @id @default(autoincrement())
 
-  // We set an `email` variable
-  // With a `String` type
-  // Then, we set the Prisma decorator:
-  // - @unique (because we want the user to be unique
-  // based on the email - two users can't have the same)
-  email String @unique
+//   // We set an `email` variable
+//   // With a `String` type
+//   // Then, we set the Prisma decorator:
+//   // - @unique (because we want the user to be unique
+//   // based on the email - two users can't have the same)
+//   email String @unique
 
-  // We set a `username` variable
-  // With a `String` type
-  username String
+//   // We set a `username` variable
+//   // With a `String` type
+//   username String
 
-  // We set a `tweets` variable
-  // With a `Tweet[]` type (one-to-many relationship)
-  // Because each user can have between
-  // 0 and an infinite number of tweets
-  // tweets Tweet[]
-}
+//   // We set a `tweets` variable
+//   // With a `Tweet[]` type (one-to-many relationship)
+//   // Because each user can have between
+//   // 0 and an infinite number of tweets
+//   // tweets Tweet[]
+// }
 
 model Number {
   id Int @id @default(autoincrement())
   number Int
+}
+
+model User {
+  username String @id @unique
+  email String @unique
+  bio String
+  posts Post[]
+}
+
+model Post {
+  postID Int @id @default(autoincrement())
+  username String
+  author User @relation(fields: [username], references: [username])
+  content String
+  likes Int
+  comments Comment[]
+}
+
+model Comment {
+  commentID Int @id @default(autoincrement())
+  postID Int
+  post Post @relation(fields: [postID], references: [postID])
+  username String
+  content String
+  likes Int
 }
