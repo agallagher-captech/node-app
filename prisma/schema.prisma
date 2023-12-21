@@ -12,32 +12,6 @@ datasource db {
 
 // After the database connection
 
-// model User {
-//   // We set an `id` variable
-//   // With an `Int` type (number)
-//   // Then, we set the Prisma decorators:
-//   // - @id (because it's an ID)
-//   // - @default(autoincrement()) (default value is auto-incremented)
-//   id Int @id @default(autoincrement())
-
-//   // We set an `email` variable
-//   // With a `String` type
-//   // Then, we set the Prisma decorator:
-//   // - @unique (because we want the user to be unique
-//   // based on the email - two users can't have the same)
-//   email String @unique
-
-//   // We set a `username` variable
-//   // With a `String` type
-//   username String
-
-//   // We set a `tweets` variable
-//   // With a `Tweet[]` type (one-to-many relationship)
-//   // Because each user can have between
-//   // 0 and an infinite number of tweets
-//   // tweets Tweet[]
-// }
-
 model Number {
   id Int @id @default(autoincrement())
   number Int
@@ -52,6 +26,7 @@ model User {
 
 model Post {
   postID Int @id @default(autoincrement())
+  // username and author link to the user who created the post
   username String
   author User @relation(fields: [username], references: [username])
   content String
@@ -61,6 +36,7 @@ model Post {
 
 model Comment {
   commentID Int @id @default(autoincrement())
+  // postID and post link to the post that was commented on
   postID Int
   post Post @relation(fields: [postID], references: [postID])
   username String
