@@ -3,4 +3,5 @@ export interface Comment {
     postID: number;
     username: string;
     content: string;
+    likes: number;
 }
