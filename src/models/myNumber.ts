@@ -1,4 +1,4 @@
 export interface myNumber {
-    id: number;
-    number: number;
+  id: number;
+  number: number;
 }

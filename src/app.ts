@@ -1,11 +1,11 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
-import router from './routes/testRouter';
+import express, { Express } from "express";
+import dotenv from "dotenv";
+import router from "./routes/testRouter";
 dotenv.config();
 
 export const app: Express = express();
 const port = process.env.PORT;
-app.use('/', router)
+app.use("/", router);
 
 // app.get('/', (req: Request, res: Response) => {
 //   res.send('Express + TypeScript Server Now With TypeScript!');
