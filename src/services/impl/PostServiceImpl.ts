@@ -14,6 +14,18 @@ export class PostServiceImpl implements PostService {
   async createPost(username: string, content: string): Promise<Post> {
     return this.postDAO.createPost(username, content)
   }
+
+  async getPostByID(postID: number): Promise<Post | null> {
+    return this.postDAO.getPostByID(postID)
+  }
+
+  async updatePostByID(postID: number, username: string, content: string): Promise<Post | null> {
+    return this.postDAO.updatePostByID(postID, username, content)
+  }
+
+  async deletePostByID(postID: number): Promise<Post | null> {
+    return this.postDAO.deletePostByID(postID)
+  }
 }
 
 export const PostServiceImplSingleton = new PostServiceImpl();

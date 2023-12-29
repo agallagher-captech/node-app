@@ -20,6 +20,29 @@ export default class Controller {
     console.log(result);
     res.status(200).json({ result });
   }
+
+  public async getPostByID(req: Request, res: Response) {
+    const postID = parseInt(req.params.postID)
+    const result = await this.postService.getPostByID(postID);
+    console.log(result);
+    res.status(200).json({ result });
+  }
+
+  public async updatePostByID(req: Request, res: Response) {
+    const postID = parseInt(req.params.postID)
+    const username = req.body.username
+    const content = req.body.content
+    const result = await this.postService.updatePostByID(postID, username, content);
+    console.log(result);
+    res.status(200).json({ result });
+  }
+
+  public async deletePostByID(req: Request, res: Response) {
+    const postID = parseInt(req.params.postID)
+    const result = await this.postService.deletePostByID(postID);
+    console.log(result);
+    res.status(200).json({ result });
+  }
 }
 
 export const ControllerSingleton = new Controller();
