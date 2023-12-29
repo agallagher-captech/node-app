@@ -1,9 +1,12 @@
 import { Router, Request, Response } from "express";
-import { PostControllerSingleton } from "../controllers/PostController";
+import { ControllerSingleton } from "../controllers/Controller";
 const router = Router();
 
+// POSTS
 router.get("/posts", (req: Request, res: Response) =>
-  PostControllerSingleton.getAllPosts(req, res)
+  ControllerSingleton.getAllPosts(req, res)
 );
-
+router.post("/posts", (req: Request, res: Response) =>
+  ControllerSingleton.createPost(req, res)
+);
 export default router;

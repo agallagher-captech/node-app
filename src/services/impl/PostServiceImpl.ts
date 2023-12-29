@@ -1,8 +1,7 @@
-// import { Post } from "@prisma/client";
+import { Post } from "@prisma/client";
 import PostDAO from "../../DAO/PostDAO";
 import { PostDAOImplSingleton } from "../../DAO/impl/PostDAOImpl";
-import { Post } from "../../models/Post";
-import PostService from "../postService";
+import PostService from "../PostService";
 
 
 export class PostServiceImpl implements PostService {
@@ -10,6 +9,10 @@ export class PostServiceImpl implements PostService {
   constructor(private postDAO: PostDAO = PostDAOImplSingleton) {}
   async getAllPosts(): Promise<Post[]> {
     return this.postDAO.getAllPosts()
+  }
+
+  async createPost(username: string, content: string): Promise<Post> {
+    return this.postDAO.createPost(username, content)
   }
 }
 

@@ -1,10 +1,12 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import router from "./routes/router";
+import bodyParser from "body-parser"
 dotenv.config();
 
 export const app: Express = express();
 const port = process.env.PORT;
+app.use(bodyParser.json())
 app.use("/", router);
 
 // app.get('/', (req: Request, res: Response) => {
