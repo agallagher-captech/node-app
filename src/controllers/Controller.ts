@@ -24,8 +24,12 @@ export default class Controller {
   public async getPostByID(req: Request, res: Response) {
     const postID = parseInt(req.params.postID)
     const result = await this.postService.getPostByID(postID);
-    console.log(result);
-    res.status(200).json({ result });
+    if (result == null) {
+      res.status(404).send("Error: post not found")
+    } else {
+      console.log(result);
+      res.status(200).json({ result });
+    }
   }
 
   public async updatePostByID(req: Request, res: Response) {
@@ -33,15 +37,23 @@ export default class Controller {
     const username = req.body.username
     const content = req.body.content
     const result = await this.postService.updatePostByID(postID, username, content);
-    console.log(result);
-    res.status(200).json({ result });
+    if (result == null) {
+      res.status(404).send("Error: post not found")
+    } else {
+      console.log(result);
+      res.status(200).json({ result });
+    }
   }
 
   public async deletePostByID(req: Request, res: Response) {
     const postID = parseInt(req.params.postID)
     const result = await this.postService.deletePostByID(postID);
-    console.log(result);
-    res.status(200).json({ result });
+    if (result == null) {
+      res.status(404).send("Error: post not found")
+    } else {
+      console.log(result);
+      res.status(200).json({ result });
+    }
   }
 }
 

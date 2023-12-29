@@ -20,10 +20,16 @@ export class PostServiceImpl implements PostService {
   }
 
   async updatePostByID(postID: number, username: string, content: string): Promise<Post | null> {
+    // check that post exists
+    const post = await this.postDAO.getPostByID(postID)
+    if (post == null) { return null }
     return this.postDAO.updatePostByID(postID, username, content)
   }
 
   async deletePostByID(postID: number): Promise<Post | null> {
+    // check that post exists
+    const post = await this.postDAO.getPostByID(postID)
+    if (post == null) { return null }
     return this.postDAO.deletePostByID(postID)
   }
 }
